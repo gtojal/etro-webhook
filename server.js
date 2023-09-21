@@ -30,7 +30,7 @@ wss.on('connection', (ws) => {
 });
 
 app.post('/webhook', (req, res) => {
-    console.log('Received Webhook:', req.body, req);
+    console.log('Received Webhook:', req.body, req, res);
     wss.clients.forEach((client) => {
         if (client.readyState === WebSocket.OPEN) {
             client.send(JSON.stringify(req.body));
